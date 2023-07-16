@@ -13,9 +13,12 @@ It all starts with RNNs in 2014 [[1]](#1) $h_t=f(h_{t-1}, x)$. Of-course there i
 Given that the authors spent a combined 70 years at Google it is natural that the language they used is inspiried by search, formally retrieval systems. 
 
 ### Why remove the encoder?
-So Vaswani et al. took the leap by removing the reccurent part of the network but they were still thinking in terms of encoder and decoder architectures, specifacally machine translation. But it did not take them long to realize their invention was more general, and a few months later [[1]](#1) they removed the encoder and used it for generation.
+So Vaswani et al. took the leap by removing the reccurent part of the network but they were still thinking in terms of encoder and decoder architectures, specifacally machine translation. But it did not take them long to realize their invention was more general, and a few months later [[3]](#3) they removed the encoder and used it for generation.
 
 simplied it further to make it more parallelizable and computational efficient 
+
+### Attention is turing-complete
+We can make a programming language out of a transformer encoder. I.e we can input a sequence and write a program that for example reverses the sequence, using a RASP compiler [[4](#4) we can then compile this program into attention weights, such that when we input our sequence to the transformer, the output is the reverse sequence.
 
 ## References
 <a id="1">[1]</a> 
@@ -28,4 +31,7 @@ Years at Google (in author order) 6,17.5,6,14,12,2,8,3
 
 <a id="3">[3]</a> 
 [Generating Wikipedia by Summarizing Long Sequences](https://arxiv.org/abs/1801.10198)
+
+<a id="4">[4]</a> 
+https://github.com/tech-srl/RASP
 
