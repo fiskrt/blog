@@ -17,5 +17,6 @@ Given that the authors spent a combined 70 years at Google it is natural that th
 ## References
 <a id="1">[1]</a> 
 [Neural Machine Translation by Jointly Learning to Align and Translate](https://arxiv.org/abs/1409.0473)
+
 <a id="2">[2]</a> 
 [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
