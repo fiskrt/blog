@@ -10,7 +10,10 @@ It all starts with RNNs in 2014 [[1]](#1) $h_t=f(h_{t-1}, x)$. Of-course there i
 ![image](https://github.com/fiskrt/blog/assets/43207511/d5f7d344-d12d-4329-898c-f1fd033d6d35)
 
 ### Why use the terms query, key and value?
-Given that the authors spent a combined 70 years at Google it is natural that the language they used is inspiried by search, formally retrieval systems. 
+Given that the authors spent a combined 70 years at Google it is natural that the language they used is inspiried by search, formally retrieval systems.
+We can demonstrate this in the following manner by thinking of a hash table. Let the content of the hash-table be $m$ rows of vectors where each vector is $n$ numbers, i.e the content is $V\in\mathbb{R}^{m\times n}$. Then we define $\alpha\in\mathbb{R}^m$ such that $\sum_{i=0}^m \alpha_i=1$. Then to look up row $j$ we set $\alpha_i=\delta_{ij}$ for all $i$ and do $\alpha^TV$.
+
+$\alpha_i=$
 
 ### Why remove the encoder?
 So Vaswani et al. took the leap by removing the reccurent part of the network but they were still thinking in terms of encoder and decoder architectures, specifacally machine translation. But it did not take them long to realize their invention was more general, and a few months later [[3]](#3) they removed the encoder and used it for generation.
@@ -18,7 +21,7 @@ So Vaswani et al. took the leap by removing the reccurent part of the network bu
 simplied it further to make it more parallelizable and computational efficient 
 
 ### Attention is turing-complete
-We can make a programming language out of a transformer encoder. I.e we can input a sequence and write a program that for example reverses the sequence, using a RASP compiler [[4](#4) we can then compile this program into attention weights, such that when we input our sequence to the transformer, the output is the reverse sequence.
+We can make a programming language out of a transformer encoder. I.e we can input a sequence and write a program that for example reverses the sequence, using a RASP compiler [[4]](#4) we can then compile this program into attention weights, such that when we input our sequence to the transformer, the output is the reverse sequence. But reversing 
 
 ## References
 <a id="1">[1]</a> 
