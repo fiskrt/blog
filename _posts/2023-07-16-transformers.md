@@ -23,7 +23,8 @@ simplied it further to make it more parallelizable and computational efficient
 
 <a id="2">[2]</a> 
 [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
-6,17.5,6,14,12,2,8,3
+
+Years at Google (in author order) 6,17.5,6,14,12,2,8,3
 
 <a id="3">[3]</a> 
 [Generating Wikipedia by Summarizing Long Sequences](https://arxiv.org/abs/1801.10198)
