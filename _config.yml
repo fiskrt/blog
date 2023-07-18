@@ -6,11 +6,12 @@ author:
 # The `>` after `description:` means to ignore line-breaks until next key.
 # If you want to omit the line-break after the end of text, use `>-` instead.
 description: >
-  There are three types of understanding:<ol type="I">
+  There are three types of understanding:
+  <ol type="I">
   <li>Existence: we observe it</li>
   <li>Simulation: we can create it</li>
   <li>Laws: we can describe it with a small set of equations</li>
-</ol>
+  </ol>
  
 #Let's get closer to the base-case.
 
