@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filip's Thoughs</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #0a0e17;
+      color: white;
+      overflow-x: hidden;
+    }
+    
+    /* Blurred background */
+    .blur-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .blur-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+    }
+    
+    .blur-circle:nth-child(1) {
+      width: 500px;
+      height: 500px;
+      background: rgba(64, 96, 255, 0.2);
+      top: -100px;
+      left: -100px;
+    }
+    
+    .blur-circle:nth-child(2) {
+      width: 600px;
+      height: 600px;
+      background: rgba(128, 0, 255, 0.15);
+      bottom: -200px;
+      right: -100px;
+    }
+    
+    .blur-circle:nth-child(3) {
+      width: 400px;
+      height: 400px;
+      background: rgba(0, 200, 255, 0.15);
+      top: 40%;
+      left: 30%;
+    }
+    
+    /* Navigation dots */
+    .nav-dots {
+      position: fixed;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .nav-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-dot.active {
+      background: white;
+      transform: scale(1.2);
+    }
+    
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+    }
+    
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #4060ff, #c840ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      cursor: pointer;
+    }
+    
+    .menu-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    /* Sections */
+    section {
+      min-height: 100vh;
+      padding: 0 40px;
+      display: none;
+    }
+    
+    .active-section {
+      display: block;
+    }
+    
+    /* Hero section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-top: 60px;
+    }
+    
+    .hero h1 {
+      font-size: 64px;
+      background: linear-gradient(135deg, #ffffff, #a0a0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+    }
+    
+    .hero p {
+      max-width: 600px;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 40px;
+    }
+    
+    .ai-visual {
+      width: 300px;
+      height: 200px;
+      margin: 20px 0;
+      position: relative;
+    }
+    
+    .cta-button {
+      background: linear-gradient(135deg, #4060ff, #c840ff);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+    
+    .cta-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(200, 64, 255, 0.5);
+    }
+    
+    /* Use cases grid */
+    .use-cases {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 60px;
+      padding-bottom: 40px;
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 25px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .glass-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    .card-title {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .glass-card p {
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 15px;
+    }
+    
+    .read-more {
+      color: #4060ff;
+      font-weight: 500;
+    }
+    
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s forwards;
+    }
+    
+    .delay-1 {
+      animation-delay: 0.2s;
+    }
+    
+    .delay-2 {
+      animation-delay: 0.4s;
+    }
+    
+    .delay-3 {
+      animation-delay: 0.6s;
+    }
+    
+    .delay-4 {
+      animation-delay: 0.8s;
+    }
+    
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Blog post styles */
+    .blog-post {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+    }
+    
+    .blog-post h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff, #a0a0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .blog-post p {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .back-button {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Solutions Page */
+    #page2 {
+      padding-top: 80px;
+    }
+    
+    #page2 h2 {
+      font-size: 48px;
+      margin-bottom: 40px;
+      text-align: center;
+      background: linear-gradient(135deg, #ffffff, #a0a0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Blurred Background -->
+    <div class="blur-bg">
+      <div class="blur-circle"></div>
+      <div class="blur-circle"></div>
+      <div class="blur-circle"></div>
+    </div>
+    
+    <!-- Navigation Dots -->
+    <div class="nav-dots" id="navDots">
+      <div class="nav-dot active" onclick="showSection('page1')"></div>
+      <div class="nav-dot" onclick="showSection('page2')"></div>
+      <div class="nav-dot" id="healthcareDot" onclick="showSection('healthcare-blog')"></div>
+      <div class="nav-dot" id="financeDot" onclick="showSection('finance-blog')"></div>
+      <div class="nav-dot" id="manufacturingDot" onclick="showSection('manufacturing-blog')"></div>
+      <div class="nav-dot" id="retailDot" onclick="showSection('retail-blog')"></div>
+    </div>
+    
+    <!-- Page 1: Home -->
+    <section id="page1" class="active-section">
+      <header>
+        <div class="logo" onclick="showSection('page1')">Filip<span style="font-weight:300">&rsquo;s&thinsp;thoughts</span></div>
+        <button class="menu-btn">☰</button>
+      </header>
+      
+      <div class="hero">
+        <h1 class="fade-in">Transformers</h1>
+        <p class="fade-in delay-1">Third-order neural networks</p>
+        
+        <div class="ai-visual fade-in delay-2">
+          <!-- AI visualization will be generated by JS -->
+        </div>
+        
+        <button class="cta-button fade-in delay-3" onclick="showSection('page2')">
+            Explore Previous
+        </button>
+      </div>
+      
+      <div class="use-cases">
+        <div class="glass-card fade-in delay-1" onclick="showSection('healthcare-blog')">
+          <div class="card-icon">🏥</div>
+          <div class="card-title">Healthcare</div>
+          <p>AI-powered diagnostic assistance and patient monitoring systems.</p>
+          <span class="read-more">Read article</span>
+        </div>
+        
+        <div class="glass-card fade-in delay-2" onclick="showSection('finance-blog')">
+          <div class="card-icon">💼</div>
+          <div class="card-title">Finance</div>
+          <p>Predictive analytics and fraud detection for financial institutions.</p>
+          <span class="read-more">Read article</span>
+        </div>
+        
+        <div class="glass-card fade-in delay-3" onclick="showSection('manufacturing-blog')">
+          <div class="card-icon">🏭</div>
+          <div class="card-title">Manufacturing</div>
+          <p>Optimized production and predictive maintenance systems.</p>
+          <span class="read-more">Read article</span>
+        </div>
+        
+        <div class="glass-card fade-in delay-4" onclick="showSection('retail-blog')">
+          <div class="card-icon">🛒</div>
+          <div class="card-title">Retail</div>
+          <p>Customer behavior analysis and inventory optimization.</p>
+          <span class="read-more">Read article</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Page 2: Solutions -->
+    <section id="page2">
+      <header>
+        <div class="logo" onclick="showSection('page1')">Nexus<span style="font-weight:300">AI</span></div>
+        <button class="menu-btn">☰</button>
+      </header>
+      
+      <h2>Our Solutions</h2>
+      
+      <div class="use-cases">
+        <div class="glass-card fade-in" onclick="showSection('healthcare-blog')">
+          <div class="card-icon">🏥</div>
+          <div class="card-title">Healthcare</div>
+          <p>AI-powered diagnostic assistance and patient monitoring systems.</p>
+          <span class="read-more">Read article</span>
+        </div>
+        
+        <div class="glass-card fade-in" onclick="showSection('finance-blog')">
+          <div class="card-icon">💼</div>
+          <div class="card-title">Finance</div>
+          <p>Predictive analytics and fraud detection for financial institutions.</p>
+          <span class="read-more">Read article</span>
+        </div>
+        
+        <div class="glass-card fade-in" onclick="showSection('manufacturing-blog')">
+          <div class="card-icon">🏭</div>
+          <div class="card-title">Manufacturing</div>
+          <p>Optimized production and predictive maintenance systems.</p>
+          <span class="read-more">Read article</span>
+        </div>
+        
+        <div class="glass-card fade-in" onclick="showSection('retail-blog')">
+          <div class="card-icon">🛒</div>
+          <div class="card-title">Retail</div>
+          <p>Customer behavior analysis and inventory optimization.</p>
+          <span class="read-more">Read article</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Healthcare Blog Post -->
+    <section id="healthcare-blog">
+      <header>
+        <div class="logo" onclick="showSection('page1')">Nexus<span style="font-weight:300">AI</span></div>
+        <button class="menu-btn">☰</button>
+      </header>
+      
+      <div class="blog-post">
+        <button class="back-button" onclick="showSection('page1')">← Back</button>
+        <h2>Revolutionizing Healthcare with AI</h2>
+        <p>The healthcare industry is experiencing a profound transformation through the implementation of artificial intelligence technologies. NexusAI's specialized healthcare agents are at the forefront of this revolution.</p>
+        <p>Our AI systems can analyze thousands of medical images in minutes, helping radiologists identify potential issues with greater accuracy and speed. These systems continuously learn from new data, improving their diagnostic capabilities over time.</p>
+        <p>Patient monitoring has also been enhanced through our AI solutions. By analyzing real-time patient data, our systems can predict deterioration before traditional monitoring systems would detect a problem, allowing medical teams to intervene earlier.</p>
+        <p>Additionally, administrative tasks that typically consume valuable clinical time are now being handled by AI assistants, freeing healthcare professionals to focus more on patient care and complex decision-making.</p>
+        <p>The future of healthcare is being shaped by these intelligent systems, creating more efficient, accurate, and patient-centered care models.</p>
+      </div>
+    </section>
+    
+    <!-- Finance Blog Post -->
+    <section id="finance-blog">
+      <header>
+        <div class="logo" onclick="showSection('page1')">Nexus<span style="font-weight:300">AI</span></div>
+        <button class="menu-btn">☰</button>
+      </header>
+      
+      <div class="blog-post">
+        <button class="back-button" onclick="showSection('page1')">← Back</button>
+        <h2>The Future of Finance: AI-Driven Insights</h2>
+        <p>Financial institutions are increasingly turning to artificial intelligence to navigate complex market conditions and enhance customer experiences. NexusAI's finance solutions are leading this transformation.</p>
+        <p>Our predictive analytics systems process vast amounts of market data to identify patterns and trends that would be impossible for human analysts to detect alone. These insights help institutions make more informed investment decisions and manage risk more effectively.</p>
+        <p>Fraud detection has been revolutionized through our machine learning algorithms, which can identify suspicious patterns in real-time transactions. This capability has significantly reduced fraudulent activities while minimizing false positives that disrupt legitimate customer activities.</p>
+        <p>Customer service in the financial sector has also been enhanced through our conversational AI agents, which can handle routine inquiries and transactions, allowing human representatives to focus on more complex customer needs.</p>
+        <p>As financial markets continue to grow in complexity, AI-driven solutions will become increasingly essential for institutions seeking to maintain competitive advantage and regulatory compliance.</p>
+      </div>
+    </section>
+    
+    <!-- Manufacturing Blog Post -->
+    <section id="manufacturing-blog">
+      <header>
+        <div class="logo" onclick="showSection('page1')">Nexus<span style="font-weight:300">AI</span></div>
+        <button class="menu-btn">☰</button>
+      </header>
+      
+      <div class="blog-post">
+        <button class="back-button" onclick="showSection('page1')">← Back</button>
+        <h2>Manufacturing Excellence Through Intelligent Automation</h2>
+        <p>The manufacturing sector is undergoing a fourth industrial revolution, with artificial intelligence as its cornerstone. NexusAI's manufacturing solutions are helping companies embrace this transformation.</p>
+        <p>Our predictive maintenance systems analyze data from machinery sensors to anticipate equipment failures before they occur. This proactive approach has reduced downtime by up to 50% for our clients, significantly improving operational efficiency.</p>
+        <p>Production optimization through AI has enabled manufacturers to maximize throughput while minimizing waste. By analyzing historical production data, our systems can recommend optimal machine settings for different products and conditions.</p>
+        <p>Quality control has been enhanced through computer vision systems that can inspect products with greater consistency and accuracy than human inspectors. These systems can detect defects that might be invisible to the human eye, ensuring higher product quality.</p>
+        <p>As global competition intensifies, manufacturers who embrace AI-driven solutions will gain significant advantages in efficiency, quality, and adaptability.</p>
+      </div>
+    </section>
+    
+    <!-- Retail Blog Post -->
+    <section id="retail-blog">
+      <header>
+        <div class="logo" onclick="showSection('page1')">Filip's<span style="font-weight:300">blog</span></div>
+        <button class="menu-btn">☰</button>
+      </header>
+      
+      <div class="blog-post">
+        <button class="back-button" onclick="showSection('page1')">← Back</button>
+        <h2>Transforming Retail Through Intelligent Customer Insights</h2>
+        <p>The retail landscape is being reshaped by artificial intelligence, creating new opportunities for personalization and efficiency. NexusAI's retail solutions are at the forefront of this transformation.</p>
+        <p>Our customer behavior analysis systems can identify shopping patterns and preferences, enabling retailers to create highly personalized experiences. These insights help retailers recommend products that customers are most likely to purchase, significantly increasing conversion rates.</p>
+        <p>Inventory management has been revolutionized through our predictive analytics, which can forecast demand with remarkable accuracy. This capability helps retailers maintain optimal stock levels, reducing both stockouts and excess inventory costs.</p>
+        <p>In-store experiences have been enhanced through our computer vision systems, which can analyze customer movement patterns and interactions with products. These insights help retailers optimize store layouts and product placements for maximum engagement.</p>
+        <p>As consumer expectations continue to evolve, retailers who leverage AI-driven insights will be best positioned to deliver the personalized, seamless experiences that customers increasingly demand.</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Function to show sections and update navigation dots
+    function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('active-section');
+      });
+      
+      // Show the selected section
+      document.getElementById(sectionId).classList.add('active-section');
+      
+      // Update navigation dots
+      document.querySelectorAll('.nav-dot').forEach(dot => {
+        dot.classList.remove('active');
+      });
+      
+      // Make the appropriate dot active
+      let dotSelector;
+      
+      // Show/hide specific dots based on section
+      if (sectionId === 'healthcare-blog') {
+        document.getElementById('healthcareDot').classList.add('active');
+        document.getElementById('healthcareDot').style.display = 'block';
+      } else if (sectionId === 'finance-blog') {
+        document.getElementById('financeDot').classList.add('active');
+        document.getElementById('financeDot').style.display = 'block';
+      } else if (sectionId === 'manufacturing-blog') {
+        document.getElementById('manufacturingDot').classList.add('active');
+        document.getElementById('manufacturingDot').style.display = 'block';
+      } else if (sectionId === 'retail-blog') {
+        document.getElementById('retailDot').classList.add('active');
+        document.getElementById('retailDot').style.display = 'block';
+      } else {
+        // For main pages, make the corresponding dot active
+        document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+          if (index === 0 && sectionId === 'page1') {
+            dot.classList.add('active');
+          } else if (index === 1 && sectionId === 'page2') {
+            dot.classList.add('active');
+          }
+        });
+      }
+      
+      // Add animation to new section content
+      const elements = document.querySelectorAll(`#${sectionId} .fade-in`);
+      elements.forEach((el, i) => {
+        el.style.animation = 'none';
+        setTimeout(() => {
+          el.style.animation = '';
+        }, 10);
+      });
+      
+      // Scroll to top when changing sections
+      window.scrollTo(0, 0);
+    }
+    function initAIVisual() {
+      const elements = document.querySelectorAll('.ai-visual');
+        elements.forEach((element) => {
+            initAIVisual2(element)
+      }); 
+    }
+    // Initialize AI visualization (simplified version)
+    function initAIVisual2(container) {
+      if (!container) return;
+      
+      // Create a simple animated visualization
+      const canvas = document.createElement('canvas');
+      canvas.width = 300;
+      canvas.height = 200;
+      container.appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      
+      // Create particles
+      for (let i = 0; i < 50; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 3 + 1,
+          color: `rgba(${Math.floor(Math.random() * 100 + 155)}, ${Math.floor(Math.random() * 100 + 155)}, 255, ${Math.random() * 0.5 + 0.5})`,
+          speedX: Math.random() * 2 - 1,
+          speedY: Math.random() * 2 - 1
+        });
+      }
+      
+      // Animation loop
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw and update particles
+        particles.forEach(p => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.fill();
+          
+          // Move particles
+          p.x += p.speedX;
+          p.y += p.speedY;
+          
+          // Bounce off edges
+          if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+        });
+        
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
+    }
+    
+    // Run initialization when document is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      initAIVisual();
+    });
+  </script>
+</body>
+</html>
