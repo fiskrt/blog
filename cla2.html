@@ -308,16 +308,6 @@
       <div class="blur-circle"></div>
     </div>
     
-    <!-- Navigation Dots -->
-    <div class="nav-dots" id="navDots">
-      <div class="nav-dot active" onclick="showSection('page1')"></div>
-      <div class="nav-dot" onclick="showSection('page2')"></div>
-      <div class="nav-dot" id="healthcareDot" onclick="showSection('healthcare-blog')"></div>
-      <div class="nav-dot" id="financeDot" onclick="showSection('finance-blog')"></div>
-      <div class="nav-dot" id="manufacturingDot" onclick="showSection('manufacturing-blog')"></div>
-      <div class="nav-dot" id="retailDot" onclick="showSection('retail-blog')"></div>
-    </div>
-    
     <!-- Page 1: Home -->
     <section id="page1" class="active-section">
       <header>
@@ -341,107 +331,53 @@
       <div class="use-cases">
         <div class="glass-card fade-in delay-1" onclick="showSection('healthcare-blog')">
           <div class="card-icon">🏥</div>
-          <div class="card-title">Healthcare</div>
+          <div class="card-title">Transformers</div>
           <p>AI-powered diagnostic assistance and patient monitoring systems.</p>
           <span class="read-more">Read article</span>
         </div>
         
         <div class="glass-card fade-in delay-2" onclick="showSection('finance-blog')">
           <div class="card-icon">💼</div>
-          <div class="card-title">Finance</div>
+          <div class="card-title">Cross-entropy</div>
           <p>Predictive analytics and fraud detection for financial institutions.</p>
           <span class="read-more">Read article</span>
         </div>
         
         <div class="glass-card fade-in delay-3" onclick="showSection('manufacturing-blog')">
           <div class="card-icon">🏭</div>
-          <div class="card-title">Manufacturing</div>
+          <div class="card-title">Parameters</div>
           <p>Optimized production and predictive maintenance systems.</p>
           <span class="read-more">Read article</span>
         </div>
         
         <div class="glass-card fade-in delay-4" onclick="showSection('retail-blog')">
           <div class="card-icon">🛒</div>
-          <div class="card-title">Retail</div>
+          <div class="card-title">torch</div>
           <p>Customer behavior analysis and inventory optimization.</p>
           <span class="read-more">Read article</span>
         </div>
-      </div>
-    </section>
-    
-    <!-- Page 2: Solutions -->
-    <section id="page2">
-      <header>
-        <div class="logo" onclick="showSection('page1')">Nexus<span style="font-weight:300">AI</span></div>
-        <button class="menu-btn">☰</button>
-      </header>
-      
-      <h2>Our Solutions</h2>
-      
-      <div class="use-cases">
-        <div class="glass-card fade-in" onclick="showSection('healthcare-blog')">
-          <div class="card-icon">🏥</div>
-          <div class="card-title">Healthcare</div>
-          <p>AI-powered diagnostic assistance and patient monitoring systems.</p>
-          <span class="read-more">Read article</span>
-        </div>
-        
-        <div class="glass-card fade-in" onclick="showSection('finance-blog')">
-          <div class="card-icon">💼</div>
-          <div class="card-title">Finance</div>
-          <p>Predictive analytics and fraud detection for financial institutions.</p>
-          <span class="read-more">Read article</span>
-        </div>
-        
-        <div class="glass-card fade-in" onclick="showSection('manufacturing-blog')">
-          <div class="card-icon">🏭</div>
-          <div class="card-title">Manufacturing</div>
-          <p>Optimized production and predictive maintenance systems.</p>
-          <span class="read-more">Read article</span>
-        </div>
-        
-        <div class="glass-card fade-in" onclick="showSection('retail-blog')">
-          <div class="card-icon">🛒</div>
-          <div class="card-title">Retail</div>
-          <p>Customer behavior analysis and inventory optimization.</p>
-          <span class="read-more">Read article</span>
-        </div>
-      </div>
     </section>
     
     <!-- Healthcare Blog Post -->
     <section id="healthcare-blog">
-      <header>
-        <div class="logo" onclick="showSection('page1')">Nexus<span style="font-weight:300">AI</span></div>
-        <button class="menu-btn">☰</button>
-      </header>
-      
       <div class="blog-post">
         <button class="back-button" onclick="showSection('page1')">← Back</button>
-        <h2>Revolutionizing Healthcare with AI</h2>
-        <p>The healthcare industry is experiencing a profound transformation through the implementation of artificial intelligence technologies. NexusAI's specialized healthcare agents are at the forefront of this revolution.</p>
-        <p>Our AI systems can analyze thousands of medical images in minutes, helping radiologists identify potential issues with greater accuracy and speed. These systems continuously learn from new data, improving their diagnostic capabilities over time.</p>
-        <p>Patient monitoring has also been enhanced through our AI solutions. By analyzing real-time patient data, our systems can predict deterioration before traditional monitoring systems would detect a problem, allowing medical teams to intervene earlier.</p>
-        <p>Additionally, administrative tasks that typically consume valuable clinical time are now being handled by AI assistants, freeing healthcare professionals to focus more on patient care and complex decision-making.</p>
-        <p>The future of healthcare is being shaped by these intelligent systems, creating more efficient, accurate, and patient-centered care models.</p>
+        <h2>Transformer is a third-order neural network</h2>
+        <p>The blogpost</p>
       </div>
     </section>
     
     <!-- Finance Blog Post -->
     <section id="finance-blog">
       <header>
-        <div class="logo" onclick="showSection('page1')">Nexus<span style="font-weight:300">AI</span></div>
+        <div class="logo" onclick="showSection('page1')"><span style="font-weight:300">thought</span></div>
         <button class="menu-btn">☰</button>
       </header>
       
       <div class="blog-post">
         <button class="back-button" onclick="showSection('page1')">← Back</button>
         <h2>The Future of Finance: AI-Driven Insights</h2>
-        <p>Financial institutions are increasingly turning to artificial intelligence to navigate complex market conditions and enhance customer experiences. NexusAI's finance solutions are leading this transformation.</p>
-        <p>Our predictive analytics systems process vast amounts of market data to identify patterns and trends that would be impossible for human analysts to detect alone. These insights help institutions make more informed investment decisions and manage risk more effectively.</p>
-        <p>Fraud detection has been revolutionized through our machine learning algorithms, which can identify suspicious patterns in real-time transactions. This capability has significantly reduced fraudulent activities while minimizing false positives that disrupt legitimate customer activities.</p>
-        <p>Customer service in the financial sector has also been enhanced through our conversational AI agents, which can handle routine inquiries and transactions, allowing human representatives to focus on more complex customer needs.</p>
-        <p>As financial markets continue to grow in complexity, AI-driven solutions will become increasingly essential for institutions seeking to maintain competitive advantage and regulatory compliance.</p>
+        <p>The blogpost</p>
       </div>
     </section>
     
@@ -455,11 +391,7 @@
       <div class="blog-post">
         <button class="back-button" onclick="showSection('page1')">← Back</button>
         <h2>Manufacturing Excellence Through Intelligent Automation</h2>
-        <p>The manufacturing sector is undergoing a fourth industrial revolution, with artificial intelligence as its cornerstone. NexusAI's manufacturing solutions are helping companies embrace this transformation.</p>
-        <p>Our predictive maintenance systems analyze data from machinery sensors to anticipate equipment failures before they occur. This proactive approach has reduced downtime by up to 50% for our clients, significantly improving operational efficiency.</p>
-        <p>Production optimization through AI has enabled manufacturers to maximize throughput while minimizing waste. By analyzing historical production data, our systems can recommend optimal machine settings for different products and conditions.</p>
-        <p>Quality control has been enhanced through computer vision systems that can inspect products with greater consistency and accuracy than human inspectors. These systems can detect defects that might be invisible to the human eye, ensuring higher product quality.</p>
-        <p>As global competition intensifies, manufacturers who embrace AI-driven solutions will gain significant advantages in efficiency, quality, and adaptability.</p>
+        <p>The blogpost</p>
       </div>
     </section>
     
@@ -473,11 +405,7 @@
       <div class="blog-post">
         <button class="back-button" onclick="showSection('page1')">← Back</button>
         <h2>Transforming Retail Through Intelligent Customer Insights</h2>
-        <p>The retail landscape is being reshaped by artificial intelligence, creating new opportunities for personalization and efficiency. NexusAI's retail solutions are at the forefront of this transformation.</p>
-        <p>Our customer behavior analysis systems can identify shopping patterns and preferences, enabling retailers to create highly personalized experiences. These insights help retailers recommend products that customers are most likely to purchase, significantly increasing conversion rates.</p>
-        <p>Inventory management has been revolutionized through our predictive analytics, which can forecast demand with remarkable accuracy. This capability helps retailers maintain optimal stock levels, reducing both stockouts and excess inventory costs.</p>
-        <p>In-store experiences have been enhanced through our computer vision systems, which can analyze customer movement patterns and interactions with products. These insights help retailers optimize store layouts and product placements for maximum engagement.</p>
-        <p>As consumer expectations continue to evolve, retailers who leverage AI-driven insights will be best positioned to deliver the personalized, seamless experiences that customers increasingly demand.</p>
+        <p>The blogpost</p>
       </div>
     </section>
   </div>
@@ -497,33 +425,6 @@
       document.querySelectorAll('.nav-dot').forEach(dot => {
         dot.classList.remove('active');
       });
-      
-      // Make the appropriate dot active
-      let dotSelector;
-      
-      // Show/hide specific dots based on section
-      if (sectionId === 'healthcare-blog') {
-        document.getElementById('healthcareDot').classList.add('active');
-        document.getElementById('healthcareDot').style.display = 'block';
-      } else if (sectionId === 'finance-blog') {
-        document.getElementById('financeDot').classList.add('active');
-        document.getElementById('financeDot').style.display = 'block';
-      } else if (sectionId === 'manufacturing-blog') {
-        document.getElementById('manufacturingDot').classList.add('active');
-        document.getElementById('manufacturingDot').style.display = 'block';
-      } else if (sectionId === 'retail-blog') {
-        document.getElementById('retailDot').classList.add('active');
-        document.getElementById('retailDot').style.display = 'block';
-      } else {
-        // For main pages, make the corresponding dot active
-        document.querySelectorAll('.nav-dot').forEach((dot, index) => {
-          if (index === 0 && sectionId === 'page1') {
-            dot.classList.add('active');
-          } else if (index === 1 && sectionId === 'page2') {
-            dot.classList.add('active');
-          }
-        });
-      }
       
       // Add animation to new section content
       const elements = document.querySelectorAll(`#${sectionId} .fade-in`);
