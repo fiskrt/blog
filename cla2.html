@@ -43,6 +43,26 @@
       top: -100px;
       left: -100px;
     }
+
+    /* Footer styling */
+    .footer {
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(5px);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .footer p {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.7);
+      font-style: italic;
+      background: linear-gradient(135deg, #ffffff, #a0a0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     
     .blur-circle:nth-child(2) {
       width: 600px;
@@ -97,7 +117,7 @@
       left: 0;
       right: 0;
       z-index: 100;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(3px);
     }
     
     .logo {
@@ -418,6 +438,10 @@
       </div>
     </section>
   </div>
+
+  <footer class="footer">
+    <p>~ Wisdom begins in wonder ~</p>
+</footer>
 
   <script>
     // Function to show sections and update navigation dots
