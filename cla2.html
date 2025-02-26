@@ -509,6 +509,11 @@
       font-family: 'VT323', monospace;
       background: #111;
       color: #32CD32;
+      /* These properties handle text overflow */
+      overflow-x: auto;
+      white-space: pre;
+      word-wrap: normal;
+      max-width: 100%;
     }
 
     /* Back button in retro style */
@@ -570,6 +575,23 @@
 
     .control-green {
       background: #27C93F;
+    }
+
+    .code-container {
+    position: relative;
+
+    }
+    .copy-button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      padding: 4px 8px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -729,9 +751,9 @@ attention(Q, K, V) = softmax(QK^T / √d_k)V</code></pre>
           <p>LOADING FRAMEWORK DOCUMENTATION...</p>
           <p>PYTORCH HAS BECOME THE DOMINANT FRAMEWORK FOR AI RESEARCH DUE TO ITS PYTHONIC DESIGN AND DYNAMIC COMPUTATION GRAPH.</p>
           <p>BASIC NEURAL NETWORK IN PYTORCH:</p>
-          <pre><code>import torch
+          <div class="code-container">
+            <pre><code>import torch
 import torch.nn as nn
-
 class NeuralNetwork(nn.Module):
     def __init__(self):
         super().__init__()
@@ -743,9 +765,9 @@ class NeuralNetwork(nn.Module):
         x = self.layer1(x)
         x = self.relu(x)
         x = self.layer2(x)
-        return x</code>
-        <button onclick="copyCode(this.parentNode)">Copy</button>
-      </pre>
+        return x</code></pre>
+            <button class="copy-button" onclick="copyCode(this)">Copy</button>
+          </div>
           <p>THE AUTOMATIC DIFFERENTIATION ENGINE ENABLES EFFICIENT BACKPROPAGATION.</p>
           <p>PYTORCH'S ECOSYSTEM CONTINUES TO GROW WITH LIGHTNING, HUGGING FACE, AND OTHER TOOLS.</p>
           <p>END OF TRANSMISSION_<span class="cursor"></span></p>
@@ -858,9 +880,15 @@ class NeuralNetwork(nn.Module):
       }
     });
   
-    function copyCode(element) {
-      const codeText = element.querySelector('code').textContent;
-      navigator.clipboard.writeText(codeText);
+
+    function copyCode(button) {
+      const container = button.parentElement;
+      const code = container.querySelector('code').textContent;
+      navigator.clipboard.writeText(code)
+        .then(() => {
+          button.textContent = 'Copied!';
+          setTimeout(() => { button.textContent = 'Copy'; }, 2000);
+        });
     }
 
     // Run initialization when document is loaded
