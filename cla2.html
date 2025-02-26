@@ -141,12 +141,13 @@
     section {
       min-height: 100vh;
       padding: 80px 40px 40px 40px; /* Added top padding for fixed header */
-      padding: 0 40px;
       display: none;
+      position: relative;
+      z-index: 5;
     }
     
     .active-section {
-      display: block;
+      display: block !important;
     }
     
     /* Hero section */
@@ -271,65 +272,6 @@
       }
     }
     
-    /* Blog post styles */
-    .blog-post {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-    }
-    
-    .blog-post h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-      background: linear-gradient(135deg, #ffffff, #a0a0ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    .blog-post p {
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-    
-    .back-button {
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-bottom: 20px;
-      display: inline-block;
-    }
-    
-    .back-button:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    /* Solutions Page */
-    #page2 {
-      padding-top: 80px;
-    }
-    
-    #page2 h2 {
-      font-size: 48px;
-      margin-bottom: 40px;
-      text-align: center;
-      background: linear-gradient(135deg, #ffffff, #a0a0ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Content area needs additional padding for fixed header */
-    .content-area {
-      padding-top: 40px;
-    }
-    
     /* Featured blog post styles */
     .featured-blog {
       max-width: 800px;
@@ -419,10 +361,220 @@
       text-align: center;
       color: rgba(255, 255, 255, 0.9);
     }
+
+    /* Solutions Page */
+    #page2 {
+      padding-top: 80px;
+    }
+    
+    #page2 h2 {
+      font-size: 48px;
+      margin-bottom: 40px;
+      text-align: center;
+      background: linear-gradient(135deg, #ffffff, #a0a0ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Content area needs additional padding for fixed header */
+    .content-area {
+      padding-top: 0px;
+    }
+    
+    /* Ensure main app container is visible */
+    #app {
+      display: block;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* NEW RETRO THEME FOR BLOG POSTS */
+    /* Import a pixel/retro font */
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+    /* Old terminal scan lines effect */
+    @keyframes scanlines {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 30px;
+      }
+    }
+
+    /* CRT screen flicker */
+    @keyframes flicker {
+      0% {
+        opacity: 0.97;
+      }
+      5% {
+        opacity: 0.9;
+      }
+      10% {
+        opacity: 0.97;
+      }
+      15% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.98;
+      }
+      95% {
+        opacity: 0.9;
+      }
+      100% {
+        opacity: 0.98;
+      }
+    }
+
+    /* Command prompt typing effect */
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    /* Apply retro theme to blog post sections */
+    .blog-post {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #000;
+      border-radius: 10px;
+      border: 2px solid #32CD32;
+      box-shadow: 0 0 15px rgba(50, 205, 50, 0.5), 
+                  inset 0 0 10px rgba(50, 205, 50, 0.3);
+      font-family: 'VT323', monospace;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* CRT overlay with scan lines */
+    .blog-post::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0.15) 50%
+      );
+      background-size: 100% 4px;
+      pointer-events: none;
+      animation: scanlines 8s linear infinite;
+      z-index: 1;
+    }
+
+    /* CRT flicker effect */
+    .blog-post::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(50, 205, 50, 0.05);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+      animation: flicker 5s infinite;
+    }
+
+    /* Terminal-style title */
+    .blog-post h2 {
+      color: #32CD32;
+      font-size: 24px;
+      margin-bottom: 25px;
+      text-shadow: 0 0 5px rgba(50, 205, 50, 0.7);
+      position: relative;
+      border-bottom: 1px solid #32CD32;
+      padding-bottom: 15px;
+    }
+
+    /* Command line-style text */
+    .blog-post p {
+      color: #32CD32;
+      font-size: 22px;
+      margin-bottom: 20px;
+      line-height: 1.4;
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Code in terminal style */
+    .blog-post code, .blog-post pre {
+      font-family: 'VT323', monospace;
+      background: #111;
+      color: #32CD32;
+    }
+
+    /* Back button in retro style */
+    .back-button {
+      background: #000;
+      color: #32CD32;
+      border: 1px solid #32CD32;
+      padding: 8px 15px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .back-button:hover {
+      background: #32CD32;
+      color: #000;
+      box-shadow: 0 0 10px rgba(50, 205, 50, 0.8);
+    }
+
+    /* Command line cursor */
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background: #32CD32;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Terminal window controls */
+    .terminal-controls {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 5px;
+      z-index: 3;
+    }
+
+    .terminal-control {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .control-red {
+      background: #FF5F56;
+    }
+
+    .control-yellow {
+      background: #FFBD2E;
+    }
+
+    .control-green {
+      background: #27C93F;
+    }
   </style>
 </head>
 <body>
-  <div id="app">
+  <div id="app" style="min-height: 100vh; display: block;">
     <!-- Blurred Background -->
     <div class="blur-bg">
       <div class="blur-circle"></div>
@@ -502,42 +654,101 @@ attention(Q, K, V) = softmax(QK^T / √d_k)V</code></pre>
     <section id="healthcare-blog">
       <div class="content-area">
         <div class="blog-post">
-          <button class="back-button" onclick="showSection('page1')">← Back</button>
-          <h2>Transformer is a third-order neural network</h2>
-          <p>The blogpost</p>
+          <!-- Terminal window controls -->
+          <div class="terminal-controls">
+            <div class="terminal-control control-red" onclick="showSection('page1')"></div>
+            <div class="terminal-control control-yellow"></div>
+            <div class="terminal-control control-green"></div>
+          </div>
+          
+          
+          <h2>TRANSFORMER IS A THIRD-ORDER NEURAL NETWORK</h2>
+          <p>KEY ADVANTAGES INCLUDE:</p>
+          <pre><code>01. PARALLELIZATION OF COMPUTATION
+02. CAPTURE OF LONG-RANGE DEPENDENCIES 
+03. CONTEXT-AWARE REPRESENTATIONS
+04. SCALABILITY TO BILLIONS OF PARAMETERS</code></pre>
+          <p>THE SELF-ATTENTION MECHANISM IS THE CORE INNOVATION:</p>
+          <pre><code>Attention(Q, K, V) = softmax(QK^T / √d_k)V</code></pre>
+          <p>THIS APPROACH ALLOWS TRANSFORMERS TO CAPTURE COMPLEX INTERDEPENDENCIES REGARDLESS OF POSITIONAL DISTANCE.</p>
+          <p>END OF TRANSMISSION_<span class="cursor"></span></p>
         </div>
       </div>
     </section>
     
-    <!-- Finance Blog Post -->
+    <!-- Finance Blog Post with Terminal Theme -->
     <section id="finance-blog">
       <div class="content-area">
         <div class="blog-post">
-          <button class="back-button" onclick="showSection('page1')">← Back</button>
-          <h2>The Future of Finance: AI-Driven Insights</h2>
-          <p>The blogpost</p>
+          <!-- Terminal window controls -->
+          <div class="terminal-controls">
+            <div class="terminal-control control-red" onclick="showSection('page1')"></div>
+            <div class="terminal-control control-yellow"></div>
+            <div class="terminal-control control-green"></div>
+          </div>
+          
+          <h2>CROSS-ENTROPY: THE HEART OF NEURAL LEARNING</h2>
+          <p>MATHEMATICALLY REPRESENTED AS:</p>
+          <pre><code>H(p,q) = -∑ p(x) * log(q(x))</code></pre>
+          <p>WHERE p IS THE TRUE DISTRIBUTION AND q IS THE PREDICTED DISTRIBUTION.</p>
+          <p>END OF TRANSMISSION_<span class="cursor"></span></p>
         </div>
       </div>
     </section>
     
-    <!-- Manufacturing Blog Post -->
+    <!-- Manufacturing Blog Post with Terminal Theme -->
     <section id="manufacturing-blog">
       <div class="content-area">
         <div class="blog-post">
-          <button class="back-button" onclick="showSection('page1')">← Back</button>
-          <h2>Manufacturing Excellence Through Intelligent Automation</h2>
-          <p>The blogpost</p>
+          <!-- Terminal window controls -->
+          <div class="terminal-controls">
+            <div class="terminal-control control-red" onclick="showSection('page1')"></div>
+            <div class="terminal-control control-yellow"></div>
+            <div class="terminal-control control-green"></div>
+          </div>
+          
+          <h2>PARAMETERS: THE BUILDING BLOCKS OF AI</h2>
+          <p>INITIALIZING PARAMETER DATABASE...</p>
+          <p>END OF TRANSMISSION_<span class="cursor"></span></p>
         </div>
       </div>
     </section>
     
-    <!-- Retail Blog Post -->
+    <!-- Retail Blog Post with Terminal Theme -->
     <section id="retail-blog">
       <div class="content-area">
         <div class="blog-post">
-          <button class="back-button" onclick="showSection('page1')">← Back</button>
-          <h2>Transforming Retail Through Intelligent Customer Insights</h2>
-          <p>The blogpost</p>
+          <!-- Terminal window controls -->
+          <div class="terminal-controls">
+            <div class="terminal-control control-red" onclick="showSection('page1')"></div>
+            <div class="terminal-control control-yellow"></div>
+            <div class="terminal-control control-green"></div>
+          </div>
+          
+          <h2>PYTORCH: THE MODERN AI FRAMEWORK</h2>
+          <p>LOADING FRAMEWORK DOCUMENTATION...</p>
+          <p>PYTORCH HAS BECOME THE DOMINANT FRAMEWORK FOR AI RESEARCH DUE TO ITS PYTHONIC DESIGN AND DYNAMIC COMPUTATION GRAPH.</p>
+          <p>BASIC NEURAL NETWORK IN PYTORCH:</p>
+          <pre><code>import torch
+import torch.nn as nn
+
+class NeuralNetwork(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.layer1 = nn.Linear(784, 128)
+        self.relu = nn.ReLU()
+        self.layer2 = nn.Linear(128, 10)
+    
+    def forward(self, x):
+        x = self.layer1(x)
+        x = self.relu(x)
+        x = self.layer2(x)
+        return x</code>
+        <button onclick="copyCode(this.parentNode)">Copy</button>
+      </pre>
+          <p>THE AUTOMATIC DIFFERENTIATION ENGINE ENABLES EFFICIENT BACKPROPAGATION.</p>
+          <p>PYTORCH'S ECOSYSTEM CONTINUES TO GROW WITH LIGHTNING, HUGGING FACE, AND OTHER TOOLS.</p>
+          <p>END OF TRANSMISSION_<span class="cursor"></span></p>
         </div>
       </div>
     </section>
@@ -553,10 +764,18 @@ attention(Q, K, V) = softmax(QK^T / √d_k)V</code></pre>
       // Hide all sections
       document.querySelectorAll('section').forEach(section => {
         section.classList.remove('active-section');
+        section.style.display = 'none';
       });
       
       // Show the selected section
-      document.getElementById(sectionId).classList.add('active-section');
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.add('active-section');
+        targetSection.style.display = 'block';
+        console.log("Section activated:", sectionId);
+      } else {
+        console.error("Section not found:", sectionId);
+      }
       
       // Update navigation dots
       document.querySelectorAll('.nav-dot').forEach(dot => {
@@ -632,7 +851,18 @@ attention(Q, K, V) = softmax(QK^T / √d_k)V</code></pre>
       
       animate();
     }
-    
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' || event.key === 'Esc' || event.keyCode === 27) {
+        showSection('page1');
+      }
+    });
+  
+    function copyCode(element) {
+      const codeText = element.querySelector('code').textContent;
+      navigator.clipboard.writeText(codeText);
+    }
+
     // Run initialization when document is loaded
     document.addEventListener('DOMContentLoaded', () => {
       initAIVisual();
