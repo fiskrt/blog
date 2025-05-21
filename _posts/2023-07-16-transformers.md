@@ -15,6 +15,8 @@ We can demonstrate this in the following manner by thinking of a hash table. Let
 
 $\alpha_i=$
 
+To be continued...
+
 ### Why remove the encoder?
 So Vaswani et al. took the leap by removing the reccurent part of the network but they were still thinking in terms of encoder and decoder architectures, specifacally machine translation. But it did not take them long to realize their invention was more general, and a few months later [[3]](#3) they removed the encoder and used it for generation.
 
