@@ -21,7 +21,6 @@ $A+B+C$ degrees. If you keep track, you’ll notice that the pen is pointing in 
 No matter the angles of the triangle, the pen will always end up pointing in the opposite direction when it reaches the base again. Therefore, the combined sum of the interior angles is always 180 degrees.
 
 <svg viewBox="0 0 400 400" width="400" height="400" xmlns="http://www.w3.org/2000/svg">
-  <!-- Glow filter definition -->
   <defs>
     <filter id="glow">
       <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
@@ -32,47 +31,34 @@ No matter the angles of the triangle, the pen will always end up pointing in the
     </filter>
   </defs>
   
-  <!-- Equilateral triangle -->
   <path d="M 200 100 L 300 250 L 100 250 Z" 
         fill="none" 
         stroke="#2d3748" 
         stroke-width="3"/>
   
-  <!-- Angle labels with lighting effects -->
   <g font-family="Arial" font-size="16" font-weight="bold">
-    <!-- C at bottom left corner -->
     <text x="85" y="255" text-anchor="middle" fill="#2d3748">
       C
       <animate attributeName="font-size" values="16;24;24;16" dur="1.5s" begin="rotate3.begin-0.2s" fill="freeze"/>
     </text>
-    
-    <!-- B at top corner -->
     <text x="200" y="90" text-anchor="middle" fill="#2d3748">
       B
       <animate attributeName="font-size" values="16;24;24;16" dur="1.5s" begin="rotate2.begin-0.2s" fill="freeze"/>
     </text>
-    
-    <!-- A at bottom right corner -->
     <text x="315" y="255" text-anchor="middle" fill="#2d3748">
       A
       <animate attributeName="font-size" values="16;24;24;16" dur="1.5s" begin="rotate1.begin-0.2s" fill="freeze"/>
     </text>
   </g>
-  
-  <!-- Pen definition -->
   <defs>
     <g id="pen">
       <rect x="-30" y="-10" width="60" height="20" fill="#4a5568"/>
       <path d="M 30 -10 L 50 0 L 30 10 Z" fill="#1a202c"/>
-      <!-- Rubber/Eraser at the back -->
       <rect x="-37" y="-9" width="7" height="18" fill="#f56565" rx="1"/>
-      <!-- Metal band between pen and rubber -->
     </g>
   </defs>
-  
-  <!-- Main animation container -->
+        
   <g>
-    <!-- Move to bottom right -->
     <animateTransform
       id="move1"
       attributeName="transform"
@@ -83,7 +69,6 @@ No matter the angles of the triangle, the pen will always end up pointing in the
       begin="0s;move4.end+1s"
       fill="freeze"/>
     
-    <!-- Move to top -->
     <animateTransform
       id="move2"
       attributeName="transform"
@@ -94,7 +79,6 @@ No matter the angles of the triangle, the pen will always end up pointing in the
       begin="rotate1.end+0.5s"
       fill="freeze"/>
     
-    <!-- Move to bottom left -->
     <animateTransform
       id="move3"
       attributeName="transform"
@@ -105,7 +89,6 @@ No matter the angles of the triangle, the pen will always end up pointing in the
       begin="rotate2.end+0.5s"
       fill="freeze"/>
     
-    <!-- Move back to center -->
     <animateTransform
       id="move4"
       attributeName="transform"
@@ -116,9 +99,7 @@ No matter the angles of the triangle, the pen will always end up pointing in the
       begin="rotate3.end+0.5s"
       fill="freeze"/>
     
-    <!-- Rotation container -->
     <g>
-      <!-- First rotation: 60° -->
       <animateTransform
         id="rotate1"
         attributeName="transform"
@@ -128,8 +109,7 @@ No matter the angles of the triangle, the pen will always end up pointing in the
         dur="1s"
         begin="move1.end+0.5s"
         fill="freeze"/>
-      
-      <!-- Second rotation: 60° more (total 120°) -->
+        
       <animateTransform
         id="rotate2"
         attributeName="transform"
@@ -140,7 +120,6 @@ No matter the angles of the triangle, the pen will always end up pointing in the
         begin="move2.end+0.5s"
         fill="freeze"/>
       
-      <!-- Third rotation: 60° more (total 180°) -->
       <animateTransform
         id="rotate3"
         attributeName="transform"
@@ -151,7 +130,6 @@ No matter the angles of the triangle, the pen will always end up pointing in the
         begin="move3.end+0.5s"
         fill="freeze"/>
       
-      <!-- Reset rotation for loop -->
       <animateTransform
         id="reset"
         attributeName="transform"
