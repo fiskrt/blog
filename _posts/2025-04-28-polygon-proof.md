@@ -14,15 +14,6 @@ categories: ml
   align-items: center;
 ">
 <svg viewBox="50 50 300 250" width="350" height="350" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
   
   <path d="M 200 100 L 300 250 L 100 250 Z" 
         fill="none" 
