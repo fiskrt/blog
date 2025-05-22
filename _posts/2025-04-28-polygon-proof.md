@@ -20,7 +20,7 @@ $A+B+C$ degrees. If you keep track, you’ll notice that the pen is pointing in 
 
 No matter the angles of the triangle, the pen will always end up pointing in the opposite direction when it reaches the base again. Therefore, the combined sum of the interior angles is always 180 degrees.
 
-<svg viewBox="0 0 400 400" width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="50 50 300 250" width="400" height="400" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter id="glow">
       <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
